@@ -8,23 +8,39 @@ class AudioPlayerManager: ObservableObject {
     
     // We update this function to accept the name of the scale
     func setupAudio(scale: String) {
-        // Clean up the scale name to match file names (e.g., "C#" becomes "Csharp")
-        let fileName = "tanpura_\(scale.replacingOccurrences(of: "#", with: "sharp"))"
-        
-        if let path = Bundle.main.path(forResource: fileName, ofType: "mp3") {
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-                audioPlayer?.numberOfLoops = -1
-                audioPlayer?.prepareToPlay()
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch {
-                print("Error loading audio: \(error.localizedDescription)")
+            // 1. Replace the sharp symbol
+            var safeName = scale.replacingOccurrences(of: "#", with: "sharp")
+            
+            // 2. Handle the dot (this catches both ways the computer might type it)
+            safeName = safeName.replacingOccurrences(of: "\u{0323}", with: "_lower")
+            safeName = safeName.replacingOccurrences(of: "Ạ", with: "A_lower")
+            safeName = safeName.replacingOccurrences(of: "Ḅ", with: "B_lower")
+            
+            let fileName = "tanpura_\(safeName)"
+            
+            // 3. Search for the file
+            if let path = Bundle.main.path(forResource: fileName, ofType: "mp3") {
+                do {
+                    audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                    audioPlayer?.numberOfLoops = -1
+                    audioPlayer?.prepareToPlay()
+                    
+                    #if os(iOS)
+                    try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                    try AVAudioSession.sharedInstance().setActive(true)
+                    #endif
+                    
+                } catch {
+                    print("Error loading audio: \(error.localizedDescription)")
+                }
+            } else {
+                // THE FIX: If the file is missing, clear the player so we don't play a ghost track!
+                print("❌ Could not find file named: \(fileName).mp3")
+                audioPlayer = nil
+                isPlaying = false
             }
-        } else {
-            print("Could not find file named: \(fileName).mp3")
         }
-    }
+    
     
     func togglePlay() {
         guard let player = audioPlayer else { return }
@@ -52,8 +68,8 @@ struct TanpuraView: View {
     // This variable tracks which scale the user clicked
     @State private var selectedScale: String = "C"
     
-    // The 12 scales of the harmonium/tanpura
-    let scales = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+    // The 15 scales of the harmonium/tanpura
+    let scales = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "Ạ", "Ạ#", "Ḅ",]
     
     // This tells the grid to make 3 columns
     let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
@@ -83,7 +99,7 @@ struct TanpuraView: View {
                 .foregroundColor(.gray)
                 .padding(.top, 10)
             
-            // 2. THE 3x4 SCALE GRID
+            // 2. THE 3x5 SCALE GRID
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(scales, id: \.self) { scale in
                     Button(action: {

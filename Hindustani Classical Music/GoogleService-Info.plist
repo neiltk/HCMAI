@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>885235463396-rtna6a0s9m30qbmtn96n800n8k01hmh0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.885235463396-rtna6a0s9m30qbmtn96n800n8k01hmh0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCmc-LFqeqBnuiGV0l3oPhpMIC8Qv0b3LU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>885235463396</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>streamvik.Hindustani-Classical-Music</string>
+	<key>PROJECT_ID</key>
+	<string>hcmai-v3e0h9</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hcmai-v3e0h9.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:885235463396:ios:364bebc5b6bd8bb500a8f1</string>
+</dict>
+</plist>

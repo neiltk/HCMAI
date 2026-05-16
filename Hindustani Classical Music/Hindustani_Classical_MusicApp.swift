@@ -6,27 +6,19 @@
 //
 
 import SwiftUI
+import FirebaseCore // 1. Bring in the Firebase toolkit
 import SwiftData
 
 @main
 struct Hindustani_Classical_MusicApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+        // 2. This 'init' function runs the exact millisecond the app opens
+        init() {
+            FirebaseApp.configure() // 3. This tells the app to read the .plist file!
         }
-    }()
 
     var body: some Scene {
         WindowGroup {
             MainAppView()
         }
-        .modelContainer(sharedModelContainer)
     }
 }

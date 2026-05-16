@@ -18,7 +18,7 @@ struct MainAppView: View {
                 }
             
             //Tab 3: The Learn Raag Screen
-            LearnView()
+            LearnDirectoryView()
                             .tabItem {
                                 Image(systemName: "books.vertical.fill")
                                 Text("Learn")
