@@ -57,10 +57,14 @@ class AuthViewModel: ObservableObject {
     
     func checkAdminStatus() {
         guard let user = Auth.auth().currentUser else { return }
-        
-        // Make sure this matches the email you registered for the Admin account!
-        if user.email == "swapnilthakre@gmail.com" {
-            self.isAdmin = true
+
+        user.getIDTokenResult { result, error in
+            guard error == nil, let claims = result?.claims else {
+                self.isAdmin = false
+                return
+            }
+
+            self.isAdmin = claims["admin"] as? Bool == true
         }
     }
 }

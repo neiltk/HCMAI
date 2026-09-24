@@ -2,9 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="HCMAI" />
     <title>Lessons | HCMAI</title>
     <meta name="description" content="Structured music lessons for swara, taal, raag study, and daily riyaz practice." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,12 +29,6 @@
         </div>
       </div>
 
-      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
       <nav class="main-nav" aria-label="Main navigation">
         <a href="index.html" class="nav-item">Home</a>
         <a href="raag-explorer.html" class="nav-item">Raag Explorer</a>
@@ -38,7 +38,7 @@
         <a href="about.html" class="nav-item">About</a>
       </nav>
 
-      <button class="primary-btn small hide-mobile">Log in</button>
+      <button class="auth-button primary-btn small" type="button">Log in</button>
     </header>
 
     <main class="page-shell">
@@ -120,6 +120,15 @@
       </nav>
     </footer>
 
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+      <a href="index.html" class="bottom-item"><span>Home</span></a>
+      <a href="raag-explorer.html" class="bottom-item"><span>Raags</span></a>
+      <a href="thaat-explorer.html" class="bottom-item"><span>Thaats</span></a>
+      <a href="lessons.html" class="bottom-item active"><span>Lessons</span></a>
+      <a href="practice.html" class="bottom-item"><span>Practice</span></a>
+    </nav>
+
     <script src="js/main.js"></script>
+    <script type="module" src="js/auth.js"></script>
   </body>
 </html>

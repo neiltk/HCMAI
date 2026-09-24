@@ -28,6 +28,7 @@ const playToggle = document.getElementById('playToggle');
 const playIcon = document.getElementById('playIcon');
 const selectedScaleLabel = document.getElementById('selectedScaleLabel');
 const scaleButtons = document.querySelectorAll('.scale-btn');
+const tanpuraAudio = document.getElementById('tanpuraAudio');
 
 if (playToggle && playIcon && selectedScaleLabel && scaleButtons.length) {
   let isPlaying = false;
@@ -36,6 +37,11 @@ if (playToggle && playIcon && selectedScaleLabel && scaleButtons.length) {
     isPlaying = !isPlaying;
     playIcon.textContent = isPlaying ? '❚❚' : '▶';
     playToggle.style.transform = isPlaying ? 'scale(0.96)' : 'scale(1)';
+
+    if (tanpuraAudio) {
+      if (isPlaying) tanpuraAudio.play().catch(() => { isPlaying = false; playIcon.textContent = '▶'; });
+      else tanpuraAudio.pause();
+    }
   });
 
   scaleButtons.forEach((button) => {
@@ -43,8 +49,15 @@ if (playToggle && playIcon && selectedScaleLabel && scaleButtons.length) {
       scaleButtons.forEach((btn) => btn.classList.remove('active'));
       button.classList.add('active');
       selectedScaleLabel.textContent = button.textContent.trim();
+      if (tanpuraAudio) {
+        const fileName = button.textContent.trim().replace('#', 'sharp');
+        tanpuraAudio.src = `assets/tanpura_${fileName}.mp3`;
+        if (isPlaying) tanpuraAudio.play().catch(() => {});
+      }
     });
   });
+
+  if (tanpuraAudio) tanpuraAudio.src = 'assets/tanpura_C.mp3';
 }
 
 const timerToggle = document.getElementById('timerToggle');

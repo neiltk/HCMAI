@@ -1,0 +1,17 @@
+{
+  "name": "HCMAI",
+  "short_name": "HCMAI",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f5f5f3",
+  "theme_color": "#0f172a",
+  "description": "Hindustani Classical Music Academy",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

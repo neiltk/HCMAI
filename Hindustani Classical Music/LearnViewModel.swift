@@ -18,7 +18,7 @@ struct TopicModel: Identifiable, Codable {
     @DocumentID var id: String?
     var title: String
     var text: String
-    var audioUrl: String? // Optional, because an "Intro" might just be text!
+    var audioPath: String? // Firebase Storage path, never a public download URL.
     var requiresLogin: Bool
     var orderIndex: Int
 }
@@ -94,7 +94,7 @@ class LearnViewModel: ObservableObject {
         
         // Scenario A: Text only, no audio file
         guard let localAudioFile = localAudioFile else {
-            let newTopic = TopicModel(id: topicRef.documentID, title: title, text: text, audioUrl: nil, requiresLogin: requiresLogin, orderIndex: orderIndex)
+            let newTopic = TopicModel(id: topicRef.documentID, title: title, text: text, audioPath: nil, requiresLogin: requiresLogin, orderIndex: orderIndex)
             try? topicRef.setData(from: newTopic)
             print("Text topic saved!")
             return
@@ -105,21 +105,16 @@ class LearnViewModel: ObservableObject {
         guard localAudioFile.startAccessingSecurityScopedResource() else { return }
         defer { localAudioFile.stopAccessingSecurityScopedResource() }
         
-        let storageRef = Storage.storage().reference().child("audio/\(topicRef.documentID).mp3")
+        let audioPath = "audio/\(topicRef.documentID).mp3"
+        let storageRef = Storage.storage().reference().child(audioPath)
         
         // 2. Upload the binary data
         storageRef.putFile(from: localAudioFile, metadata: nil) { metadata, error in
             if let error = error { print("Upload failed: \(error.localizedDescription)"); return }
             
-            // 3. Ask Google for the public download link
-            storageRef.downloadURL { url, error in
-                guard let downloadUrl = url?.absoluteString else { return }
-                
-                // 4. Save the text AND the new audio link to Firestore
-                let newTopic = TopicModel(id: topicRef.documentID, title: title, text: text, audioUrl: downloadUrl, requiresLogin: requiresLogin, orderIndex: orderIndex)
-                try? topicRef.setData(from: newTopic)
-                print("Audio successfully uploaded and linked!")
-            }
+            let newTopic = TopicModel(id: topicRef.documentID, title: title, text: text, audioPath: audioPath, requiresLogin: requiresLogin, orderIndex: orderIndex)
+            try? topicRef.setData(from: newTopic)
+            print("Audio successfully uploaded and linked!")
         }
     }
 }

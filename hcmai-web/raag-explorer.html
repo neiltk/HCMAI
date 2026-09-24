@@ -2,9 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="HCMAI" />
     <title>Raag Explorer | HCMAI</title>
     <meta name="description" content="Browse raags by mood, time, thaat, and personality in the HCMAI Raag Explorer." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,12 +29,6 @@
         </div>
       </div>
 
-      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
       <nav class="main-nav" aria-label="Main navigation">
         <a href="index.html" class="nav-item">Home</a>
         <a href="raag-explorer.html" class="nav-item active">Raag Explorer</a>
@@ -38,7 +38,7 @@
         <a href="about.html" class="nav-item">About</a>
       </nav>
 
-      <button class="primary-btn small hide-mobile">Log in</button>
+      <button class="auth-button primary-btn small" type="button">Log in</button>
     </header>
 
     <main class="page-shell narrow-shell">
@@ -48,7 +48,10 @@
             <p class="eyebrow">Discover</p>
             <h1>Raag Explorer</h1>
           </div>
-          <button class="secondary-btn small">Saved raags</button>
+          <div class="inline-actions">
+            <button class="secondary-btn small admin-only" type="button" data-admin-only>+ Add Raag</button>
+            <button class="secondary-btn small">Saved raags</button>
+          </div>
         </div>
 
         <div class="toolbar-block">
@@ -68,65 +71,7 @@
       </section>
 
       <section class="card-grid three-up explorer-grid" id="raagGrid">
-        <article class="music-card" data-name="Bhairav" data-time="Morning" data-thaat="Bhairav" data-tags="devotional, emotional, morning">
-          <div class="card-badge accent">Bhairav</div>
-          <h3>Devotion and intimacy</h3>
-          <p>Warm, meditative, and highly expressive for early practice.</p>
-          <div class="meta-row">
-            <span>1st Prahar</span>
-            <span>Morning</span>
-          </div>
-        </article>
-
-        <article class="music-card" data-name="Yaman" data-time="Evening" data-thaat="Kalyan" data-tags="graceful, romantic, evening">
-          <div class="card-badge purple">Yaman</div>
-          <h3>Royal elegance</h3>
-          <p>A deeply melodic raag known for serene, expansive phrasing.</p>
-          <div class="meta-row">
-            <span>5th Prahar</span>
-            <span>Evening</span>
-          </div>
-        </article>
-
-        <article class="music-card" data-name="Bageshree" data-time="Night" data-thaat="Kafi" data-tags="melodic, romantic, night">
-          <div class="card-badge green">Bageshree</div>
-          <h3>Night bloom</h3>
-          <p>Soft, lyrical, and emotionally rich with a graceful contour.</p>
-          <div class="meta-row">
-            <span>Night</span>
-            <span>Kafi</span>
-          </div>
-        </article>
-
-        <article class="music-card" data-name="Asavari" data-time="Morning" data-thaat="Asavari" data-tags="melodic, serene, morning">
-          <div class="card-badge orange">Asavari</div>
-          <h3>Gentle and flowing</h3>
-          <p>A flexible and soothing raag ideal for disciplined swara work.</p>
-          <div class="meta-row">
-            <span>2nd Prahar</span>
-            <span>Morning</span>
-          </div>
-        </article>
-
-        <article class="music-card" data-name="Kedar" data-time="Evening" data-thaat="Kedar" data-tags="sacred, calm, evening">
-          <div class="card-badge blue">Kedar</div>
-          <h3>Spiritual calm</h3>
-          <p>Often associated with devotion and a grounded melodic shape.</p>
-          <div class="meta-row">
-            <span>Evening</span>
-            <span>Devotional</span>
-          </div>
-        </article>
-
-        <article class="music-card" data-name="Malkauns" data-time="Night" data-thaat="Bhairavi" data-tags="dark, dramatic, night">
-          <div class="card-badge red">Malkauns</div>
-          <h3>Deep and dramatic</h3>
-          <p>Distinguished by a darker tonal palette and an intense character.</p>
-          <div class="meta-row">
-            <span>Night</span>
-            <span>7th Prahar</span>
-          </div>
-        </article>
+        <p id="raagStatus" class="empty-state">Loading the live raag library...</p>
       </section>
     </main>
 
@@ -142,6 +87,16 @@
       </nav>
     </footer>
 
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+      <a href="index.html" class="bottom-item"><span>Home</span></a>
+      <a href="raag-explorer.html" class="bottom-item active"><span>Raags</span></a>
+      <a href="thaat-explorer.html" class="bottom-item"><span>Thaats</span></a>
+      <a href="lessons.html" class="bottom-item"><span>Lessons</span></a>
+      <a href="practice.html" class="bottom-item"><span>Practice</span></a>
+    </nav>
+
     <script src="js/main.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/learn.js"></script>
   </body>
 </html>

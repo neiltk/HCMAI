@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Compose | HCMAI</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body data-page="compose">
+    <header class="topbar"><div class="brand-wrap"><div class="brand-mark">H</div><div class="brand-copy"><span class="brand-name">HCMAI</span><span class="brand-tag">Classical Music Academy</span></div></div><nav class="main-nav" aria-label="Main navigation"><a href="index.html" class="nav-item">Home</a><a href="raag-explorer.html" class="nav-item">Raag Explorer</a><a href="compose.html" class="nav-item active">Compose</a><a href="practice.html" class="nav-item">Practice</a></nav><button class="auth-button primary-btn small" type="button">Log in</button></header>
+    <main class="page-shell"><section class="section-surface composer"><label class="composer-title"><span>Bandish title</span><input id="notationTitle" placeholder="Enter Bandish Title..." /></label><div id="notationOutput" class="notation-output">Tap a Swara to start...</div><div class="segmented-row"><label>Octave<select id="octave"><option value="lower">Lower</option><option value="middle" selected>Middle</option><option value="upper">Upper</option></select></label><label>Pitch<select id="pitch"><option value="shuddha" selected>Shuddha</option><option value="komal">Komal</option><option value="tivra">Tivra</option></select></label></div><div class="swara-grid" id="swaraGrid"></div><div class="structure-row"><button data-token="|">|</button><button data-token="x">x</button><button data-token="2">2</button><button data-token="0">0</button><button data-token="3">3</button><button data-token="4">4</button><button data-token="\n">↵</button></div><div class="composer-actions"><button id="deleteNotation" class="secondary-btn small">Delete</button><button id="clearNotation" class="secondary-btn small">Clear all</button><button id="printNotation" class="primary-btn small">Generate document</button></div></section></main>
+    <nav class="bottom-nav" aria-label="Mobile navigation"><a href="index.html" class="bottom-item"><span>Home</span></a><a href="raag-explorer.html" class="bottom-item"><span>Raags</span></a><a href="compose.html" class="bottom-item active"><span>Compose</span></a><a href="practice.html" class="bottom-item"><span>Practice</span></a></nav>
+    <script src="js/main.js"></script><script type="module" src="js/auth.js"></script><script src="js/compose.js"></script>
+  </body>
+</html>
