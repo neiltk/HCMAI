@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice | HCMAI</title>
+    <meta name="description" content="Daily riyaz practice with a tanpura-inspired drone, note selection, and rhythm tools." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body data-page="practice">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark">H</div>
+        <div class="brand-copy">
+          <span class="brand-name">HCMAI</span>
+          <span class="brand-tag">Classical Music Academy</span>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="raag-explorer.html" class="nav-item">Raag Explorer</a>
+        <a href="thaat-explorer.html" class="nav-item">Thaat Explorer</a>
+        <a href="lessons.html" class="nav-item">Lessons</a>
+        <a href="practice.html" class="nav-item active">Practice</a>
+        <a href="about.html" class="nav-item">About</a>
+      </nav>
+
+      <button class="primary-btn small hide-mobile">Log in</button>
+    </header>
+
+    <main class="page-shell">
+      <section class="practice-layout">
+        <div class="section-surface practice-panel">
+          <div class="practice-header">
+            <p class="eyebrow">Daily riyaz</p>
+            <h1>Practice Studio</h1>
+          </div>
+
+          <button id="playToggle" class="play-button" aria-label="Play practice drone">
+            <span id="playIcon">▶</span>
+          </button>
+
+          <div class="selected-scale">
+            <span>Selected scale</span>
+            <strong id="selectedScaleLabel">C</strong>
+          </div>
+
+          <div class="scale-grid" id="scaleGrid">
+            <button class="scale-btn active">C</button>
+            <button class="scale-btn">C#</button>
+            <button class="scale-btn">D</button>
+            <button class="scale-btn">D#</button>
+            <button class="scale-btn">E</button>
+            <button class="scale-btn">F</button>
+            <button class="scale-btn">F#</button>
+            <button class="scale-btn">G</button>
+            <button class="scale-btn">G#</button>
+            <button class="scale-btn">A</button>
+            <button class="scale-btn">A#</button>
+            <button class="scale-btn">B</button>
+          </div>
+        </div>
+
+        <aside class="section-surface practice-sidebar">
+          <h3>Session controls</h3>
+
+          <div class="control-group">
+            <label>Tempo</label>
+            <input type="range" min="40" max="180" value="72" />
+          </div>
+
+          <div class="control-group">
+            <label>Practice timer</label>
+            <div class="timer-box">
+              <strong id="timerValue">15:00</strong>
+              <button id="timerToggle" class="secondary-btn small">Start</button>
+            </div>
+          </div>
+
+          <div class="practice-queue">
+            <h4>Today’s focus</h4>
+            <ul>
+              <li>Swara continuity</li>
+              <li>Pitch precision</li>
+              <li>Raag phrases</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>HCMAI</strong>
+        <span>Hindustani Classical Music Academy</span>
+      </div>
+      <nav>
+        <a href="about.html">About</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="practice.html">Practice</a>
+      </nav>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

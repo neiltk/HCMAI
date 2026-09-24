@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raag Explorer | HCMAI</title>
+    <meta name="description" content="Browse raags by mood, time, thaat, and personality in the HCMAI Raag Explorer." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body data-page="raag-explorer">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark">H</div>
+        <div class="brand-copy">
+          <span class="brand-name">HCMAI</span>
+          <span class="brand-tag">Classical Music Academy</span>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="raag-explorer.html" class="nav-item active">Raag Explorer</a>
+        <a href="thaat-explorer.html" class="nav-item">Thaat Explorer</a>
+        <a href="lessons.html" class="nav-item">Lessons</a>
+        <a href="practice.html" class="nav-item">Practice</a>
+        <a href="about.html" class="nav-item">About</a>
+      </nav>
+
+      <button class="primary-btn small hide-mobile">Log in</button>
+    </header>
+
+    <main class="page-shell narrow-shell">
+      <section class="section-surface hero-inline">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Discover</p>
+            <h1>Raag Explorer</h1>
+          </div>
+          <button class="secondary-btn small">Saved raags</button>
+        </div>
+
+        <div class="toolbar-block">
+          <label class="search-box">
+            <span>Search</span>
+            <input id="raagSearch" type="search" placeholder="Search raags, mood, or thaat" />
+          </label>
+
+          <div class="filter-row">
+            <button class="filter-pill active">All</button>
+            <button class="filter-pill">Morning</button>
+            <button class="filter-pill">Evening</button>
+            <button class="filter-pill">Night</button>
+            <button class="filter-pill">Popular</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card-grid three-up explorer-grid" id="raagGrid">
+        <article class="music-card" data-name="Bhairav" data-time="Morning" data-thaat="Bhairav" data-tags="devotional, emotional, morning">
+          <div class="card-badge accent">Bhairav</div>
+          <h3>Devotion and intimacy</h3>
+          <p>Warm, meditative, and highly expressive for early practice.</p>
+          <div class="meta-row">
+            <span>1st Prahar</span>
+            <span>Morning</span>
+          </div>
+        </article>
+
+        <article class="music-card" data-name="Yaman" data-time="Evening" data-thaat="Kalyan" data-tags="graceful, romantic, evening">
+          <div class="card-badge purple">Yaman</div>
+          <h3>Royal elegance</h3>
+          <p>A deeply melodic raag known for serene, expansive phrasing.</p>
+          <div class="meta-row">
+            <span>5th Prahar</span>
+            <span>Evening</span>
+          </div>
+        </article>
+
+        <article class="music-card" data-name="Bageshree" data-time="Night" data-thaat="Kafi" data-tags="melodic, romantic, night">
+          <div class="card-badge green">Bageshree</div>
+          <h3>Night bloom</h3>
+          <p>Soft, lyrical, and emotionally rich with a graceful contour.</p>
+          <div class="meta-row">
+            <span>Night</span>
+            <span>Kafi</span>
+          </div>
+        </article>
+
+        <article class="music-card" data-name="Asavari" data-time="Morning" data-thaat="Asavari" data-tags="melodic, serene, morning">
+          <div class="card-badge orange">Asavari</div>
+          <h3>Gentle and flowing</h3>
+          <p>A flexible and soothing raag ideal for disciplined swara work.</p>
+          <div class="meta-row">
+            <span>2nd Prahar</span>
+            <span>Morning</span>
+          </div>
+        </article>
+
+        <article class="music-card" data-name="Kedar" data-time="Evening" data-thaat="Kedar" data-tags="sacred, calm, evening">
+          <div class="card-badge blue">Kedar</div>
+          <h3>Spiritual calm</h3>
+          <p>Often associated with devotion and a grounded melodic shape.</p>
+          <div class="meta-row">
+            <span>Evening</span>
+            <span>Devotional</span>
+          </div>
+        </article>
+
+        <article class="music-card" data-name="Malkauns" data-time="Night" data-thaat="Bhairavi" data-tags="dark, dramatic, night">
+          <div class="card-badge red">Malkauns</div>
+          <h3>Deep and dramatic</h3>
+          <p>Distinguished by a darker tonal palette and an intense character.</p>
+          <div class="meta-row">
+            <span>Night</span>
+            <span>7th Prahar</span>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>HCMAI</strong>
+        <span>Hindustani Classical Music Academy</span>
+      </div>
+      <nav>
+        <a href="about.html">About</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="practice.html">Practice</a>
+      </nav>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
