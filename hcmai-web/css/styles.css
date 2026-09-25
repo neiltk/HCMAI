@@ -897,12 +897,12 @@ input[type="range"] {
 .composer {
   display: grid;
   gap: 18px;
-  max-width: 780px;
-  margin: 22px auto;
+  width: 100%;
+  margin: 0;
 }
 
 .composer-title,
-.segmented-row label {
+.modifier-group {
   display: grid;
   gap: 8px;
   color: var(--muted);
@@ -911,7 +911,6 @@ input[type="range"] {
 }
 
 .composer-title input,
-.segmented-row select,
 .composer textarea {
   width: 100%;
   border: 1px solid var(--stroke);
@@ -932,10 +931,43 @@ input[type="range"] {
   line-height: 1.7;
 }
 
-.segmented-row {
+.modifier-controls {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 14px;
+}
+
+.modifier-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.glass-slider {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.46);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 8px 20px rgba(25, 33, 50, 0.06);
+  backdrop-filter: blur(14px);
+}
+
+.glass-slider button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.glass-slider button.active {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary-dark);
+  box-shadow: 0 5px 12px rgba(25, 33, 50, 0.1);
 }
 
 .swara-grid {
@@ -946,7 +978,9 @@ input[type="range"] {
 
 .swara-grid button,
 .structure-row button {
-  min-height: 54px;
+  aspect-ratio: 1;
+  width: 100%;
+  min-height: 0;
   border: 0;
   border-radius: 50%;
   background: var(--primary);
@@ -956,13 +990,15 @@ input[type="range"] {
 }
 
 .structure-row {
+  justify-content: center;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
 .structure-row button {
-  min-width: 44px;
+  width: 44px;
   min-height: 40px;
   border-radius: 10px;
   background: rgba(18, 24, 38, 0.08);
@@ -975,10 +1011,34 @@ input[type="range"] {
   gap: 10px;
 }
 
+ .print-document {
+  display: none;
+}
+
 @media print {
   body * { visibility: hidden; }
-  .composer, .composer * { visibility: visible; }
-  .composer { position: absolute; inset: 0; box-shadow: none; }
+  .print-document,
+  .print-document * { visibility: visible; }
+  .print-document {
+    display: block;
+    position: absolute;
+    inset: 0;
+    padding: 48px;
+    color: #000;
+    background: #fff;
+  }
+
+  .print-document h1 {
+    margin-bottom: 32px;
+    font-size: 28px;
+  }
+
+  .print-document div {
+    white-space: pre-wrap;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 20px;
+    line-height: 1.8;
+  }
 }
 
 .about-hero {
@@ -1125,7 +1185,7 @@ input[type="range"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
+  gap: 4px;
   padding: 8px 8px 10px;
   border-radius: 24px;
   background: rgba(17, 24, 39, 0.9);
@@ -1135,7 +1195,8 @@ input[type="range"] {
 }
 
 .bottom-item {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   min-height: 54px;
   display: inline-flex;
   align-items: center;
@@ -1146,6 +1207,8 @@ input[type="range"] {
   font-weight: 700;
   letter-spacing: 0.02em;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .bottom-item.active {
@@ -1241,5 +1304,74 @@ input[type="range"] {
 
   .brand-copy {
     display: none;
+  }
+
+  .composer {
+    gap: 12px;
+    padding: 14px 12px;
+  }
+
+  .notation-output {
+    min-height: 104px;
+    padding: 14px;
+    font-size: 1.1rem;
+  }
+
+  .modifier-controls {
+    gap: 8px;
+  }
+
+  .glass-slider button {
+    min-height: 36px;
+    font-size: 0.7rem;
+  }
+
+  .swara-grid {
+    grid-template-columns: repeat(4, 64px);
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .structure-row {
+    gap: 8px;
+  }
+
+  .structure-row button {
+    width: 36px;
+    min-height: 36px;
+  }
+
+  .composer-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 699px) and (max-height: 740px) {
+  .page-shell {
+    padding-top: 10px;
+  }
+
+  .composer {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .notation-output {
+    min-height: 76px;
+    padding: 10px;
+  }
+
+  .swara-grid {
+    grid-template-columns: repeat(4, 56px);
+    gap: 6px;
+  }
+
+  .structure-row {
+    gap: 6px;
+  }
+
+  .structure-row button {
+    width: 32px;
+    min-height: 32px;
   }
 }
