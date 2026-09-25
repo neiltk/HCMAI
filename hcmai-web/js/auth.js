@@ -8,18 +8,12 @@ import {
   signInWithEmailAndPassword,
   signOut
 } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyAg-fwv_6hVjkCG1fovvDpMtNze7e8rIh4',
-  authDomain: 'hcmai-dev.firebaseapp.com',
-  projectId: 'hcmai-dev',
-  storageBucket: 'hcmai-dev.firebasestorage.app',
-  messagingSenderId: '257430405760',
-  appId: '1:257430405760:web:0b40bf3ea569825d4fdc65'
-};
+import { firebaseConfig, firebaseEnvironment } from './firebase-config.js';
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
+
+console.info(`HCMAI Firebase environment: ${firebaseEnvironment}`);
 
 const appState = {
   isAuthenticated: false,
